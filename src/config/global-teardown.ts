@@ -1,36 +1,48 @@
 import { FullConfig } from '@playwright/test';
 import { Logger } from '../utils/logger';
 
-async function globalTeardown(config: FullConfig) {
+async function globalTeardown(_config: FullConfig) {
   const logger = new Logger();
-  
+
   logger.info('🧹 Starting global teardown...');
-  
-  // Cleanup test data
-  await cleanupTestData();
-  
-  // Generate final reports
-  await generateReports();
-  
-  // Send notifications
-  await sendNotifications();
-  
+
+  try {
+    // Cleanup test data
+    await cleanupTestData(logger);
+  } catch (error) {
+    logger.error('Failed to cleanup test data');
+  }
+
+  try {
+    // Generate final reports
+    await generateReports(logger);
+  } catch (error) {
+    logger.error('Failed to generate reports');
+  }
+
+  try {
+    // Send notifications
+    await sendNotifications(logger);
+  } catch (error) {
+    logger.error('Failed to send notifications');
+  }
+
   logger.info('✅ Global teardown completed');
 }
 
-async function cleanupTestData() {
+async function cleanupTestData(logger: Logger) {
   // Clean up test data, remove test users, etc.
-  console.log('Cleaning up test data...');
+  logger.info('Cleaning up test data...');
 }
 
-async function generateReports() {
+async function generateReports(logger: Logger) {
   // Generate and process final reports
-  console.log('Generating final reports...');
+  logger.info('Generating final reports...');
 }
 
-async function sendNotifications() {
+async function sendNotifications(logger: Logger) {
   // Send test results notifications
-  console.log('Sending notifications...');
+  logger.info('Sending notifications...');
 }
 
 export default globalTeardown;

@@ -27,7 +27,7 @@ A comprehensive, production-ready Playwright boilerplate for UI and API testing 
 
 ```bash
 git clone <repository-url>
-cd playwright-boilerplate
+cd playwright-tests
 npm install
 npm run setup:install
 ```
