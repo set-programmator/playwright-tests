@@ -1,21 +1,21 @@
 {
   "default": {
-    "username": "testuser",
-    "password": "testpass123",
+    "username": "${TEST_USER}",
+    "password": "${TEST_PASSWORD}",
     "email": "test@example.com",
     "firstName": "Test",
     "lastName": "User"
   },
   "admin": {
-    "username": "admin",
-    "password": "admin123",
+    "username": "${ADMIN_USER}",
+    "password": "${ADMIN_PASSWORD}",
     "email": "admin@example.com",
     "firstName": "Admin",
     "lastName": "User"
   },
   "invalid": {
     "username": "invalid",
-    "password": "wrongpass",
+    "password": "${INVALID_PASSWORD}",
     "email": "invalid@example.com"
   }
 }

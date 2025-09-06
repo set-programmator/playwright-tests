@@ -14,7 +14,7 @@ export abstract class BaseComponent {
 
   async isVisible(): Promise<boolean> {
     try {
-      await this.waitHelpers.waitForElementToBeVisible(this.rootLocator, 5000);
+      await this.waitHelpers.waitForElementToBeVisible(this.rootLocator);
       return true;
     } catch {
       return false;
@@ -30,6 +30,6 @@ export abstract class BaseComponent {
   }
 
   async getText(): Promise<string> {
-    return await this.rootLocator.textContent() || '';
+    return (await this.rootLocator.textContent()) ?? '';
   }
 }

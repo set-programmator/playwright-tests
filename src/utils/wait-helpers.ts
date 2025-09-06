@@ -11,7 +11,11 @@ export class WaitHelpers {
     await expect(locator).toBeHidden({ timeout });
   }
 
-  async waitForTextToContain(locator: Locator, text: string, timeout: number = 30000): Promise<void> {
+  async waitForTextToContain(
+    locator: Locator,
+    text: string,
+    timeout: number = 30000
+  ): Promise<void> {
     await expect(locator).toContainText(text, { timeout });
   }
 
@@ -21,10 +25,18 @@ export class WaitHelpers {
 
   async waitForApiResponse(urlPattern: string | RegExp, timeout: number = 30000): Promise<any> {
     const response = await this.page.waitForResponse(urlPattern, { timeout });
-    return response.json();
+    try {
+      return await response.json();
+    } catch {
+      return null;
+    }
   }
 
-  async waitForElementCount(locator: Locator, count: number, timeout: number = 30000): Promise<void> {
+  async waitForElementCount(
+    locator: Locator,
+    count: number,
+    timeout: number = 30000
+  ): Promise<void> {
     await expect(locator).toHaveCount(count, { timeout });
   }
 

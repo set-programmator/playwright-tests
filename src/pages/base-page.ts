@@ -15,8 +15,13 @@ export abstract class BasePage {
 
   async navigate(url: string): Promise<void> {
     this.logger.info(`Navigating to: ${url}`);
-    await this.page.goto(url);
-    await this.waitForPageLoad();
+    try {
+      await this.page.goto(url);
+      await this.waitForPageLoad();
+    } catch (error) {
+      this.logger.error(`Navigation failed to: ${url}`);
+      throw error;
+    }
   }
 
   async waitForPageLoad(): Promise<void> {
@@ -24,7 +29,7 @@ export abstract class BasePage {
   }
 
   async getTitle(): Promise<string> {
-    return await this.page.title();
+    return this.page.title();
   }
 
   async getCurrentUrl(): Promise<string> {
@@ -56,7 +61,7 @@ export abstract class BasePage {
 
   async getText(locator: Locator): Promise<string> {
     await this.waitHelpers.waitForElementToBeVisible(locator);
-    return await locator.textContent() || '';
+    return (await locator.textContent()) ?? '';
   }
 
   async isElementVisible(locator: Locator): Promise<boolean> {

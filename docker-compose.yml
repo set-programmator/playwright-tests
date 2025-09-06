@@ -3,6 +3,7 @@ version: '3.8'
 services:
   playwright-tests:
     build: .
+    restart: on-failure
     volumes:
       - ./reports:/app/reports
       - ./test-results:/app/test-results
@@ -12,14 +13,27 @@ services:
       - API_BASE_URL=${API_BASE_URL:-https://jsonplaceholder.typicode.com}
       - HEADLESS=true
     command: npm run test:parallel
+    healthcheck:
+      test: ["CMD", "test", "-f", "/app/package.json"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
   allure-report:
+    depends_on:
+      - playwright-tests
     image: frankescobar/allure-docker-service
+    restart: unless-stopped
     ports:
-      - "5050:5050"
+      - "${ALLURE_PORT:-5050}:5050"
     volumes:
       - ./allure-results:/app/allure-results
       - ./allure-reports:/app/default-reports
     environment:
       CHECK_RESULTS_EVERY_SECONDS: 3
       KEEP_HISTORY: 20
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5050"]
+      interval: 30s
+      timeout: 10s
+      retries: 3

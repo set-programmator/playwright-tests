@@ -18,7 +18,7 @@ export class LoginPage extends BasePage {
   }
 
   async login(username: string, password: string): Promise<void> {
-    this.logger.info(`Logging in with username: ${username}`);
+    this.logger.info('Attempting login');
     await this.fillInput(this.usernameInput, username);
     await this.fillInput(this.passwordInput, password);
     await this.clickElement(this.loginButton);
@@ -33,6 +33,11 @@ export class LoginPage extends BasePage {
   }
 
   async isLoginFormVisible(): Promise<boolean> {
-    return await this.isElementVisible(this.loginButton);
+    const [usernameVisible, passwordVisible, buttonVisible] = await Promise.all([
+      this.isElementVisible(this.usernameInput),
+      this.isElementVisible(this.passwordInput),
+      this.isElementVisible(this.loginButton),
+    ]);
+    return usernameVisible && passwordVisible && buttonVisible;
   }
 }
