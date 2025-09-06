@@ -1,0 +1,48 @@
+{
+  "name": "playwright-boilerplate",
+  "version": "1.0.0",
+  "description": "A comprehensive Playwright boilerplate for UI and API testing",
+  "main": "index.js",
+  "scripts": {
+    "test:ui": "playwright test tests/ui --reporter=html,allure-playwright",
+    "test:api": "playwright test tests/api --reporter=html,allure-playwright",
+    "test:mobile": "playwright test --project=mobile --reporter=html,allure-playwright",
+    "test:smoke": "playwright test --grep @smoke --reporter=html,allure-playwright",
+    "test:regression": "playwright test --grep @regression --reporter=html,allure-playwright",
+    "test:parallel": "playwright test --workers=4 --reporter=html,allure-playwright",
+    "test:headed": "playwright test --headed --reporter=html,allure-playwright",
+    "test:debug": "playwright test --debug",
+    "test:record": "playwright test --trace=on --video=on --screenshot=on",
+    "report:open": "playwright show-report",
+    "report:allure": "allure serve allure-results",
+    "report:generate": "allure generate allure-results --clean",
+    "setup:install": "playwright install && npm install",
+    "setup:env": "node src/utils/setup-env.js",
+    "lint": "eslint src tests --ext .ts,.js",
+    "lint:fix": "eslint src tests --ext .ts,.js --fix",
+    "format": "prettier --write src tests",
+    "prepare": "husky install"
+  },
+  "keywords": ["playwright", "testing", "automation", "ui", "api", "typescript"],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "eslint": "^8.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "prettier": "^3.0.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^15.0.0",
+    "allure-playwright": "^2.9.0",
+    "allure-commandline": "^2.24.0",
+    "@axe-core/playwright": "^4.8.0",
+    "ajv": "^8.12.0",
+    "dotenv": "^16.3.0"
+  },
+  "lint-staged": {
+    "*.{ts,js}": ["eslint --fix", "prettier --write"]
+  }
+}

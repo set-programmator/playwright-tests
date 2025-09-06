@@ -1,0 +1,29 @@
+{
+  "timeouts": {
+    "default": 30000,
+    "navigation": 30000,
+    "element": 10000
+  },
+  "retries": {
+    "ci": 2,
+    "local": 0
+  },
+  "browsers": {
+    "chromium": {
+      "headless": true,
+      "viewport": { "width": 1280, "height": 720 }
+    },
+    "firefox": {
+      "headless": true,
+      "viewport": { "width": 1280, "height": 720 }
+    },
+    "webkit": {
+      "headless": true,
+      "viewport": { "width": 1280, "height": 720 }
+    }
+  },
+  "mobile": {
+    "viewport": { "width": 375, "height": 667 },
+    "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 14_0 like Mac OS X)"
+  }
+}

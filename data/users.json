@@ -1,0 +1,21 @@
+{
+  "default": {
+    "username": "testuser",
+    "password": "testpass123",
+    "email": "test@example.com",
+    "firstName": "Test",
+    "lastName": "User"
+  },
+  "admin": {
+    "username": "admin",
+    "password": "admin123",
+    "email": "admin@example.com",
+    "firstName": "Admin",
+    "lastName": "User"
+  },
+  "invalid": {
+    "username": "invalid",
+    "password": "wrongpass",
+    "email": "invalid@example.com"
+  }
+}
