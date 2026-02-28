@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES2022",
     "lib": ["ES2022", "DOM"],
-    "module": "ES2022",
+    "module": "commonjs",
     "moduleResolution": "node",
     "strict": true,
     "esModuleInterop": true,
@@ -26,6 +26,13 @@
       "@data/*": ["data/*"]
     }
   },
-  "include": ["src/**/*", "tests/**/*"],
+  "ts-node": {
+    "esm": false,
+    "transpileOnly": true,
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  },
+  "include": ["src/**/*", "tests/**/*", "scripts/**/*"],
   "exclude": ["node_modules", "dist", "reports"]
 }

@@ -74,6 +74,13 @@ npm run test:smoke
 - **Visual Debugging Tools** - Screenshots, traces, videos
 - **Live Test Dashboard** - Real-time test monitoring
 
+### 🤖 **AI-Powered MCP (Model Context Protocol)**
+- **Automatic Website Analysis** - Scan any URL for elements
+- **Auto Test Generation** - Create tests from website structure
+- **Page Object Auto-Creation** - Generate page objects automatically
+- **Smart Element Detection** - Forms, buttons, links, inputs
+- **Interactive CLI** - Simple wizard for test generation
+
 ## 📁 Project Structure
 
 ```
@@ -185,6 +192,70 @@ npm run dev:record           # Record test actions
 npm run dev:trace            # Generate execution trace
 npm run dev:codegen          # Playwright codegen tool
 ```
+
+### 🤖 **AI-Powered MCP Test Generation**
+```bash
+# Generate tests from your BASE_URL (uses .env)
+npm run mcp:generate
+
+# Generate tests from specific URL
+npm run mcp:generate https://example.com
+
+# Analyze website without generating tests
+npm run mcp:analyze
+
+# For detailed guide
+cat docs/MCP_QUICK_START.md
+cat docs/MCP_GUIDE.md
+```
+
+**How it works:**
+1. Run `npm run mcp:generate`
+2. System analyzes your website
+3. Automatically detects forms, buttons, navigations
+4. Generates 5+ test cases
+5. Creates page object model
+6. Saves to `tests/ui/` and `src/pages/`
+
+**Perfect for:**
+- Quickly bootstrapping tests for new features
+- Adding tests to legacy applications
+- Generating baseline test suite
+- Learning test patterns
+
+### 📋 **Intelligent Test Planner**
+```bash
+# Create comprehensive test plan
+npm run mcp:planner
+
+# Generate test data and fixtures
+npm run mcp:generator
+
+# Scan and fix test issues
+npm run mcp:healer
+
+# Run all three tools in sequence
+npm run mcp:full
+
+# Interactive menu
+npm run mcp:suite
+```
+
+**The MCP Suite includes:**
+- **🎯 Planner** - Intelligent test planning with user journeys and risk assessment
+- **⚙️ Generator** - Advanced test data, fixtures, and parameterized tests
+- **🔧 Healer** - Automated test scanning for flakiness, broken selectors, best practices
+
+**Generating from Planner:**
+1. Analyzes your website structure
+2. Creates multi-scenario test plan with priorities
+3. Identifies critical user journeys
+4. Generates test data combinations (valid, boundary, invalid, edge cases)
+5. Creates reusable fixtures (page, API, auth)
+6. Scans for test anti-patterns and suggests fixes
+7. Produces comprehensive health report
+
+[Read Full Planner/Generator/Healer Guide →](docs/PLANNER_GENERATOR_HEALER.md)
 
 ### 📊 **Analytics & Reporting**
 ```bash
@@ -508,6 +579,9 @@ npm run setup:interactive
 - [⚡ **Performance Testing**](docs/PERFORMANCE.md)
 - [♿ **Accessibility Testing**](docs/ACCESSIBILITY.md)
 - [🔍 **Troubleshooting Guide**](docs/TROUBLESHOOTING.md)
+- [🤖 **MCP Quick Start**](docs/MCP_QUICK_START.md) - **AI-Powered Test Generation**
+- [🤖 **MCP Complete Guide**](docs/MCP_GUIDE.md) - Advanced Usage & Customization
+- [📋 **Planner • Generator • Healer**](docs/PLANNER_GENERATOR_HEALER.md) - **Intelligent Test Management Suite**
 
 ## 🤝 Contributing
 
