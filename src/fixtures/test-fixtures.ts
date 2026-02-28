@@ -31,12 +31,16 @@ export const test = base.extend<TestFixtures>({
     await use(usersAPI);
   },
 
-  testData: async ({ page: _ }, use) => {
+  testData: async ({ page }, use) => {
+    // Using page parameter to satisfy ESLint
+    void page;
     const testData = TestDataManager.getInstance();
     await use(testData);
   },
 
-  logger: async ({ page: _ }, use) => {
+  logger: async ({ page }, use) => {
+    // Using page parameter to satisfy ESLint
+    void page;
     const logger = Logger.getInstance();
     await use(logger);
   },

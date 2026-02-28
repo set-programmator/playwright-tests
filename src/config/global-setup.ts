@@ -1,7 +1,9 @@
 import { FullConfig } from '@playwright/test';
 import { Logger } from '../utils/logger';
 
-async function globalSetup(_config: FullConfig) {
+async function globalSetup(config: FullConfig) {
+  // Using config parameter
+  void config;
   const logger = new Logger();
 
   logger.info('🚀 Starting global setup...');

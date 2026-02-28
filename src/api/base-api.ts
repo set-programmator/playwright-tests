@@ -1,6 +1,5 @@
 import { APIRequestContext, APIResponse } from '@playwright/test';
 import { Logger } from '../utils/logger';
-import * as path from 'path';
 
 export class BaseAPI {
   protected request: APIRequestContext;

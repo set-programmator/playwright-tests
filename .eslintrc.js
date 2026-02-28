@@ -1,5 +1,9 @@
 module.exports = {
-  extends: ['eslint:recommended'],
+  extends: [
+    'eslint:recommended',
+    '@typescript-eslint/recommended',
+    'plugin:playwright/recommended'
+  ],
   parserOptions: {
     ecmaVersion: 2022,
     sourceType: 'module',
@@ -13,6 +17,11 @@ module.exports = {
     'prefer-const': 'error',
     'no-var': 'error',
     'no-unused-vars': 'warn',
+    // Playwright specific rules
+    'playwright/expect-expect': 'error',
+    'playwright/no-conditional-in-test': 'error',
+    'playwright/no-skipped-test': 'warn',
+    'playwright/valid-expect': 'error',
   },
   ignorePatterns: ['node_modules/', 'dist/', 'reports/', 'test-results/', 'allure-results/'],
   overrides: [

@@ -1,0 +1,77 @@
+{
+  "name": "User Management API",
+  "version": "1.0.0",
+  "baseUrl": "/api",
+  "endpoints": [
+    {
+      "path": "/users",
+      "method": "GET",
+      "description": "Get all users",
+      "expectedStatus": 200,
+      "responseSchema": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["id", "name", "email"],
+          "properties": {
+            "id": { "type": "number" },
+            "name": { "type": "string" },
+            "email": { "type": "string" },
+            "role": { "type": "string" }
+          }
+        }
+      }
+    },
+    {
+      "path": "/users/1",
+      "method": "GET", 
+      "description": "Get user by ID",
+      "expectedStatus": 200,
+      "responseSchema": {
+        "type": "object",
+        "required": ["id", "name", "email"],
+        "properties": {
+          "id": { "type": "number" },
+          "name": { "type": "string" },
+          "email": { "type": "string" },
+          "role": { "type": "string" }
+        }
+      }
+    },
+    {
+      "path": "/users",
+      "method": "POST",
+      "description": "Create new user",
+      "requestBody": {
+        "name": "Test User",
+        "email": "test@example.com",
+        "role": "user"
+      },
+      "expectedStatus": 201,
+      "responseSchema": {
+        "type": "object",
+        "required": ["id", "name", "email"],
+        "properties": {
+          "id": { "type": "number" },
+          "name": { "type": "string" },
+          "email": { "type": "string" },
+          "role": { "type": "string" }
+        }
+      }
+    },
+    {
+      "path": "/users/999",
+      "method": "GET",
+      "description": "Get non-existent user (error case)",
+      "expectedStatus": 404,
+      "responseSchema": {
+        "type": "object",
+        "required": ["error", "code"],
+        "properties": {
+          "error": { "type": "string" },
+          "code": { "type": "string" }
+        }
+      }
+    }
+  ]
+}

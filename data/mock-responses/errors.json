@@ -1,0 +1,19 @@
+{
+  "GET_users_404": {
+    "status": 404,
+    "response": {
+      "error": "User not found",
+      "code": "USER_NOT_FOUND"
+    }
+  },
+  "POST_users_400": {
+    "status": 400,
+    "response": {
+      "error": "Invalid user data",
+      "code": "VALIDATION_ERROR",
+      "details": [
+        "Email is required"
+      ]
+    }
+  }
+}

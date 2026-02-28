@@ -1,0 +1,37 @@
+{
+  "GET_users": {
+    "status": 200,
+    "response": [
+      {
+        "id": 1,
+        "name": "John Doe",
+        "email": "john@example.com",
+        "role": "admin"
+      },
+      {
+        "id": 2,
+        "name": "Jane Smith",
+        "email": "jane@example.com",
+        "role": "user"
+      }
+    ]
+  },
+  "GET_users_1": {
+    "status": 200,
+    "response": {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john@example.com",
+      "role": "admin"
+    }
+  },
+  "POST_users": {
+    "status": 201,
+    "response": {
+      "id": 3,
+      "name": "New User",
+      "email": "new@example.com",
+      "role": "user"
+    }
+  }
+}

@@ -9,6 +9,11 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
+  timeout: 60000, // Global test timeout
+  expect: {
+    timeout: 10000, // Assertion timeout
+    toHaveScreenshot: { threshold: 0.2 }, // Visual comparison threshold
+  },
   reporter: [
     ['html'],
     ['allure-playwright'],
@@ -52,11 +57,6 @@ export default defineConfig({
       }
     }
   ],
-  webServer: process.env.CI ? undefined : {
-    command: 'npm run dev',
-    port: 3000,
-    reuseExistingServer: !process.env.CI
-  },
   outputDir: 'test-results/',
   globalSetup: require.resolve('./src/config/global-setup.ts'),
   globalTeardown: require.resolve('./src/config/global-teardown.ts')
